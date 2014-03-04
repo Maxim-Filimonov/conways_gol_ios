@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "94EDC42018C63C31006F98EA"
+               BuildableName = "ConwaysGOL-Tests.xctest"
+               BlueprintName = "ConwaysGOL-Tests"
+               ReferencedContainer = "container:ConwaysGOL.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

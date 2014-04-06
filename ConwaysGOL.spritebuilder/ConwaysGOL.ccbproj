@@ -73,7 +73,7 @@
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
-	<integer>4</integer>
+	<integer>2</integer>
 	<key>resourcePaths</key>
 	<array>
 		<dict>
@@ -174,8 +174,8 @@
 		</dict>
 	</dict>
 	<key>versionStr</key>
-	<string>Version: 1.0.3
-GitHub: 9026dcdd50
+	<string>Version: 1.0.4
+GitHub: 00a3af1cfa
 </string>
 </dict>
 </plist>

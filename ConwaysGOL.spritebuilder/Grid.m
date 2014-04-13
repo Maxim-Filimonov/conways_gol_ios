@@ -25,11 +25,13 @@
 
 - (void)setupGrid {
     _gridArray = [NSMutableArray array];
-    for (int rowIndex = 0; rowIndex < GRID_ROWS; rowIndex++) {
+    for (NSUInteger rowIndex = 0; rowIndex < GRID_ROWS; rowIndex++) {
         _gridArray[rowIndex] = [NSMutableArray array];
-        for (int columnIndex = 0; columnIndex < GRID_COLUMNS; columnIndex++) {
+        for (NSUInteger columnIndex = 0; columnIndex < GRID_COLUMNS; columnIndex++) {
+
             Creature* creature = [[Creature alloc] initCreature];
             _gridArray[rowIndex][columnIndex] = creature;
+
         }
     }
 }

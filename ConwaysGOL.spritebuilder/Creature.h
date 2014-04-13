@@ -4,7 +4,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CCSprite.h"
 
 
 @interface Creature : CCSprite
+@property(nonatomic, assign) BOOL isAlive;
+
+- (id)initCreature;
 @end

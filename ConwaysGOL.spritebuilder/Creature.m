@@ -9,4 +9,13 @@
 @implementation Creature {
 
 }
+- (id)initCreature {
+    self = [super initWithImageNamed:@"GameOfLifeAssets/Assets/bubble.png"];
+
+    if (self) {
+        self.isAlive = false;
+    }
+
+    return self;
+}
 @end

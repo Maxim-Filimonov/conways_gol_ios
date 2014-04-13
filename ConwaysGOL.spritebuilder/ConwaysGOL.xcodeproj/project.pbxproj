@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		62DE927A72BB0BF0FD404CCA /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9CA0A5F974EF02D265A1 /* Grid.m */; };
 		62DE95290C68DA8EABCDAC23 /* Creature.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9EBBA79AC82BC497EC68 /* Creature.m */; };
+		62DE98DEAAF2F32B3650600F /* CreatureSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */; };
 		94EDC42318C63C31006F98EA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EDC42218C63C31006F98EA /* XCTest.framework */; };
 		94EDC42418C63C31006F98EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		94EDC42518C63C31006F98EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3B17B978D7009739AE /* UIKit.framework */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		0D9802D26122421BBFE58CE0 /* Pods-ConwaysGOL-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConwaysGOL-Tests.xcconfig"; path = "Pods/Pods-ConwaysGOL-Tests.xcconfig"; sourceTree = "<group>"; };
+		62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatureSpecs.m; sourceTree = "<group>"; };
 		62DE97168FD531EE5778A474 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 		62DE9A0C36DE2EA762BFAF50 /* Creature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Creature.h; sourceTree = "<group>"; };
 		62DE9CA0A5F974EF02D265A1 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				94EDC42718C63C31006F98EA /* Supporting Files */,
+				62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */,
 			);
 			path = "ConwaysGOL-Tests";
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62DE98DEAAF2F32B3650600F /* CreatureSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +534,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Source/libs/cocos2d-iphone\"/**";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -571,6 +576,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Source/libs/cocos2d-iphone\"/**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = xctest;
 			};

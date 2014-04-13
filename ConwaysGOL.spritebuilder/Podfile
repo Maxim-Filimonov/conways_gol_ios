@@ -7,5 +7,5 @@ platform :ios, '7.0'
 # If you're using Xcode 5 with a brand new project
 # (XCTest based instead of OCUnit based) use this instead:
 target 'ConwaysGOL-Tests', :exclusive => true do
-  pod 'Kiwi/XCTest'
+  pod 'Kiwi/XCTest', :head
 end

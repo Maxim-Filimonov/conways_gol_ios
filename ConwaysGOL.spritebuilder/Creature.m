@@ -9,11 +9,16 @@
 @implementation Creature {
 
 }
+- (void)setIsAlive:(BOOL)isAlive {
+    _isAlive = isAlive;
+    self.visible = _isAlive;
+}
+
 - (id)initCreature {
     self = [super initWithImageNamed:@"GameOfLifeAssets/Assets/bubble.png"];
 
     if (self) {
-        self.isAlive = false;
+        self.isAlive = FALSE;
     }
 
     return self;

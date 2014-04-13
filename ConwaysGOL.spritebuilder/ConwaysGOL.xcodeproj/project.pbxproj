@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62DE902272C0DCFC96B3C3FE /* GameSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE91E77470A02A9A4368FC /* GameSpecs.m */; };
-		62DE91D9520DD78EF38FB9DF /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE90E2290BC24C956E2681 /* Game.m */; };
-		62DE931256560F7B262E1167 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9F0A23BC3373A96AF867 /* Cell.m */; };
-		62DE98DEAAF2F32B3650600F /* CellSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9209DEC1E711106A4AA2 /* CellSpecs.m */; };
 		94EDC42318C63C31006F98EA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EDC42218C63C31006F98EA /* XCTest.framework */; };
 		94EDC42418C63C31006F98EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		94EDC42518C63C31006F98EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3B17B978D7009739AE /* UIKit.framework */; };
@@ -72,12 +68,6 @@
 
 /* Begin PBXFileReference section */
 		0D9802D26122421BBFE58CE0 /* Pods-ConwaysGOL-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConwaysGOL-Tests.xcconfig"; path = "Pods/Pods-ConwaysGOL-Tests.xcconfig"; sourceTree = "<group>"; };
-		62DE90E2290BC24C956E2681 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		62DE91E77470A02A9A4368FC /* GameSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSpecs.m; sourceTree = "<group>"; };
-		62DE9209DEC1E711106A4AA2 /* CellSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellSpecs.m; sourceTree = "<group>"; };
-		62DE98FBE8508AA0260B0828 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		62DE9A60193570C406679364 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
-		62DE9F0A23BC3373A96AF867 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		94EDC42118C63C31006F98EA /* ConwaysGOL-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConwaysGOL-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EDC42218C63C31006F98EA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		94EDC42818C63C31006F98EA /* ConwaysGOL-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConwaysGOL-Tests-Info.plist"; sourceTree = "<group>"; };
@@ -163,8 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				94EDC42718C63C31006F98EA /* Supporting Files */,
-				62DE9209DEC1E711106A4AA2 /* CellSpecs.m */,
-				62DE91E77470A02A9A4368FC /* GameSpecs.m */,
 			);
 			path = "ConwaysGOL-Tests";
 			sourceTree = "<group>";
@@ -186,10 +174,6 @@
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
-				62DE9F0A23BC3373A96AF867 /* Cell.m */,
-				62DE9A60193570C406679364 /* Cell.h */,
-				62DE90E2290BC24C956E2681 /* Game.m */,
-				62DE98FBE8508AA0260B0828 /* Game.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -452,8 +436,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62DE98DEAAF2F32B3650600F /* CellSpecs.m in Sources */,
-				62DE902272C0DCFC96B3C3FE /* GameSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,8 +446,6 @@
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
-				62DE931256560F7B262E1167 /* Cell.m in Sources */,
-				62DE91D9520DD78EF38FB9DF /* Game.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

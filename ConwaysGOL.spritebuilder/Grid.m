@@ -9,8 +9,6 @@
 
 @implementation Grid {
     NSMutableArray *_gridArray;
-    float _cellWidth;
-    float _cellHeight;
     int _generation;
     int _totalAlive;
 }
@@ -18,14 +16,29 @@
 - (void)onEnter {
     [super onEnter];
 
+    _cellWidth = self.contentSize.width / GRID_COLUMNS;
+    _cellHeight = self.contentSize.height / GRID_ROWS;
     [self setupGrid];
 
     self.userInteractionEnabled = TRUE;
 }
 
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint touchLocation = [touch locationInNode:self];
+
+    Creature *creature = [self creatureForTouchPosition:touchLocation];
+
+    creature.isAlive = ! creature.isAlive;
+}
+
+- (Creature *)creatureForTouchPosition:(CGPoint)point {
+    NSUInteger rowIndex = (NSUInteger) (point.y / self.cellHeight);
+    NSUInteger columnIndex = (NSUInteger) (point.x / self.cellWidth);
+    NSMutableArray *row = _gridArray[rowIndex];
+    return row[columnIndex];
+}
+
 - (void)setupGrid {
-    _cellWidth = self.contentSize.width / GRID_COLUMNS;
-    _cellHeight = self.contentSize.height / GRID_ROWS;
 
     float x = 0;
     float y = 0;
@@ -42,9 +55,9 @@
             [self addChild:creature];
             _gridArray[rowIndex][columnIndex] = creature;
 
-            x += _cellWidth;
+            x += self.cellWidth;
         }
-        y += _cellHeight;
+        y += self.cellHeight;
     }
 }
 

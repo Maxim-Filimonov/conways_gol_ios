@@ -13,4 +13,6 @@ static const int GRID_COLUMNS = 10;
 
 @property(nonatomic, strong) NSMutableArray *gridArray;
 
+@property(nonatomic, readonly) float cellWidth;
+@property(nonatomic, readonly) float cellHeight;
 @end

@@ -57,10 +57,39 @@ describe(@"Grid", ^{
                 [[theValue(gridChildrenCount) should] equal:theValue(GRID_COLUMNS*GRID_ROWS)];
             });
         });
+
+        describe(@"-touchBegan", ^{
+            __block Grid *grid;
+            beforeEach(^{
+                grid = [[Grid alloc] init];
+                grid.contentSize = CGSizeMake(100, 80);
+                [grid onEnter];
+            });
+            it(@"revives creature in touched cell when it is not alive", ^{
+               Creature *selectedCell = (Creature*)[grid gridArray][5][2];
+               selectedCell.isAlive = FALSE;
+
+               UITouch *touch = [UITouch mock];
+               [touch stub:@selector(locationInNode:) andReturn:theValue(ccp(selectedCell.position.x,selectedCell.position.y))];
+
+               [grid touchBegan:touch withEvent:nil];
+
+                [[theValue(selectedCell.isAlive) should] beTrue];
+            });
+            it(@"kills creature when is is alive", ^{
+                Creature *selectedCell = (Creature*)[grid gridArray][0][0];
+                selectedCell.isAlive = TRUE;
+
+                UITouch *touch = [UITouch mock];
+                [touch stub:@selector(locationInNode:) andReturn:theValue(ccp(selectedCell.position.x,selectedCell.position.y))];
+
+                [grid touchBegan:touch withEvent:nil];
+
+                [[theValue(selectedCell.isAlive) should] beFalse];
+
+            });
+        });
     });
 });
 
 SPEC_END
-
-
-

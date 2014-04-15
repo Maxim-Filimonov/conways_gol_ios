@@ -24,15 +24,27 @@
 }
 
 - (void)setupGrid {
+    _cellWidth = self.contentSize.width / GRID_COLUMNS;
+    _cellHeight = self.contentSize.height / GRID_ROWS;
+
+    float x = 0;
+    float y = 0;
+
     _gridArray = [NSMutableArray array];
     for (NSUInteger rowIndex = 0; rowIndex < GRID_ROWS; rowIndex++) {
+        x = 0;
         _gridArray[rowIndex] = [NSMutableArray array];
         for (NSUInteger columnIndex = 0; columnIndex < GRID_COLUMNS; columnIndex++) {
 
             Creature* creature = [[Creature alloc] initCreature];
+            creature.anchorPoint = ccp(0, 0);
+            creature.position = ccp(x, y);
+            [self addChild:creature];
             _gridArray[rowIndex][columnIndex] = creature;
 
+            x += _cellWidth;
         }
+        y += _cellHeight;
     }
 }
 

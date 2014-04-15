@@ -1,6 +1,7 @@
 #import "Kiwi.h"
 #import "Grid.h"
 #import "Creature.h"
+#import "CCBAnimationManager.h"
 
 SPEC_BEGIN(GridSpecs)
 
@@ -23,19 +24,37 @@ describe(@"Grid", ^{
                 [[theValue([[grid gridArray] count]) should] equal:theValue(GRID_ROWS)];
             });
             it(@"creates columns for each row", ^{
-                for (NSUInteger rowIndex = 0; rowIndex < [[grid gridArray] count]; rowIndex++) {
-                    NSMutableArray *row = [grid gridArray][rowIndex];
+                for (NSMutableArray *row in [grid gridArray]) {
                     [[theValue([row count]) should] equal:theValue(GRID_COLUMNS)];
                 }
             });
             it(@"creates a creature in every cell", ^{
-                for (NSUInteger rowIndex = 0; rowIndex < [[grid gridArray] count]; rowIndex++) {
-                    NSMutableArray *row = [grid gridArray][rowIndex];
-                    for (NSUInteger columnIndex = 0; columnIndex < [row count]; columnIndex++) {
-                        NSMutableArray *cell = row[columnIndex];
+                for (NSMutableArray *row in [grid gridArray]){
+                    for (Creature *cell in row) {
                         [[cell should] beKindOfClass:[Creature class]];
                     }
                 }
+            });
+            it(@"places cells in each corner of the grid", ^{
+                grid.contentSize = CGSizeMake(300, 400);
+                [grid onEnter];
+
+                Creature* upperLeftCell = [[[grid gridArray] firstObject] firstObject];
+                Creature* upperRightCell = [[[grid gridArray] firstObject] lastObject];
+                Creature* lowerLeftCell = [[[grid gridArray] lastObject] firstObject];
+                Creature* lowerRightCell = [[[grid gridArray] lastObject] lastObject];
+
+                int lastCellX = 300 - 300/GRID_COLUMNS;
+                int lastCellY = 400 - 400/GRID_ROWS;
+                [[theValue(upperRightCell.position.x - upperLeftCell.position.x) should] equal:theValue(lastCellX)];
+                [[theValue(lowerRightCell.position.x - lowerLeftCell.position.x) should] equal:theValue(lastCellX)];
+                [[theValue(lowerLeftCell.position.y - upperLeftCell.position.y) should] equal:theValue(lastCellY)];
+                [[theValue(lowerRightCell.position.y - upperRightCell.position.y) should] equal:theValue(lastCellY)];
+            });
+            it(@"adds cells as children of the grid", ^{
+                NSUInteger gridChildrenCount = [[grid children] count];
+
+                [[theValue(gridChildrenCount) should] equal:theValue(GRID_COLUMNS*GRID_ROWS)];
             });
         });
     });

@@ -78,6 +78,10 @@
     [self schedule:@selector(step) interval:0.5f];
 }
 
+- (void)pause {
+    [self unschedule:@selector(step)];
+}
+
 - (void)step {
     [self.gameEvolver evolveStep];
     self.generationLabel.string = [NSString stringWithFormat:@"%d", _gameEvolver.generation];

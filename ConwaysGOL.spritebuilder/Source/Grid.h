@@ -26,4 +26,5 @@ static const int GRID_COLUMNS = 10;
 
 - (void)play;
 
+- (void)pause;
 @end

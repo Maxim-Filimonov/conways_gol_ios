@@ -123,6 +123,22 @@ describe(@"Grid", ^{
            [[grid.populationLabel.string should] equal:@"111"];
        });
     });
+    describe(@"-pause", ^{
+        __block Grid *grid;
+        __block Grid *gameEvolver;
+        beforeEach(^{
+            grid = [[Grid alloc] init];
+            gameEvolver = [Grid mock];
+            [grid setGameEvolver:gameEvolver];
+        });
+        it(@"stops schedule", ^{
+            [grid play];
+
+            [[gameEvolver shouldNot] receive:@selector(evolveStep)];
+            [grid pause];
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+        });
+    });
 });
 
 SPEC_END

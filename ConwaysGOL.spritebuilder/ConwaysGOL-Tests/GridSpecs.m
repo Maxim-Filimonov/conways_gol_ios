@@ -90,6 +90,39 @@ describe(@"Grid", ^{
             });
         });
     });
+    describe(@"-play", ^{
+        __block Grid *grid;
+        __block Grid *gameEvolver;
+        beforeEach(^{
+            grid = [[Grid alloc] init];
+            [grid onEnter];
+
+            gameEvolver = [Grid mock];
+            [grid setGameEvolver:gameEvolver];
+            [gameEvolver stub:@selector(evolveStep)];
+            [gameEvolver stub:@selector(generation) andReturn:theValue(0)];
+            [gameEvolver stub:@selector(population) andReturn:theValue(0)];
+            [grid setGenerationLabel:[[CCLabelTTF alloc] init]];
+            [grid setPopulationLabel:[[CCLabelTTF alloc] init]];
+        });
+       it(@"schedules evolve of step every half a second", ^{
+           // 2 schedules per second + 1 initial when schedule launched
+           [grid play];
+
+           [[gameEvolver should] receive:@selector(evolveStep) withCount:3];
+           [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+       });
+       it(@"updates generation label and population labels", ^{
+           // 2 schedules per second + 1 initial when schedule launched
+           [gameEvolver stub:@selector(generation) andReturn:theValue(42)];
+           [gameEvolver stub:@selector(population) andReturn:theValue(111)];
+           [grid play];
+
+           [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+           [[grid.generationLabel.string should] equal:@"42"];
+           [[grid.populationLabel.string should] equal:@"111"];
+       });
+    });
 });
 
 SPEC_END

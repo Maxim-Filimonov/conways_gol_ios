@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62DE927A72BB0BF0FD404CCA /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9CA0A5F974EF02D265A1 /* Grid.m */; };
-		62DE95290C68DA8EABCDAC23 /* Creature.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9EBBA79AC82BC497EC68 /* Creature.m */; };
+		62DE950DDADC4B134C525644 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9015D91FEA398288F07A /* Grid.m */; };
 		62DE98DEAAF2F32B3650600F /* CreatureSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */; };
+		62DE9A83C314292D5C1B82BF /* Creature.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9851E6BD1B47D3EE54B1 /* Creature.m */; };
 		62DE9BD0E87C04A3E3878251 /* GridSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE901EF45D87E39A124CF6 /* GridSpecs.m */; };
 		94EDC42318C63C31006F98EA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EDC42218C63C31006F98EA /* XCTest.framework */; };
 		94EDC42418C63C31006F98EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
@@ -72,12 +72,13 @@
 
 /* Begin PBXFileReference section */
 		0D9802D26122421BBFE58CE0 /* Pods-ConwaysGOL-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConwaysGOL-Tests.xcconfig"; path = "Pods/Pods-ConwaysGOL-Tests.xcconfig"; sourceTree = "<group>"; };
+		62DE9015D91FEA398288F07A /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Grid.m; path = Source/Grid.m; sourceTree = "<group>"; };
 		62DE901EF45D87E39A124CF6 /* GridSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridSpecs.m; sourceTree = "<group>"; };
+		62DE907F7857F41B8B3DDFEB /* Creature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Creature.h; path = Source/Creature.h; sourceTree = "<group>"; };
 		62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatureSpecs.m; sourceTree = "<group>"; };
-		62DE97168FD531EE5778A474 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
-		62DE9A0C36DE2EA762BFAF50 /* Creature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Creature.h; sourceTree = "<group>"; };
-		62DE9CA0A5F974EF02D265A1 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
-		62DE9EBBA79AC82BC497EC68 /* Creature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Creature.m; sourceTree = "<group>"; };
+		62DE9851E6BD1B47D3EE54B1 /* Creature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Creature.m; path = Source/Creature.m; sourceTree = "<group>"; };
+		62DE99A178FC7703F31556B8 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Grid.h; path = Source/Grid.h; sourceTree = "<group>"; };
+		62DE9BBD3EF3449701024C49 /* GameEvolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameEvolver.h; path = Source/GameEvolver.h; sourceTree = "<group>"; };
 		94EDC42118C63C31006F98EA /* ConwaysGOL-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConwaysGOL-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EDC42218C63C31006F98EA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		94EDC42818C63C31006F98EA /* ConwaysGOL-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConwaysGOL-Tests-Info.plist"; sourceTree = "<group>"; };
@@ -186,10 +187,11 @@
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
-				62DE9CA0A5F974EF02D265A1 /* Grid.m */,
-				62DE97168FD531EE5778A474 /* Grid.h */,
-				62DE9EBBA79AC82BC497EC68 /* Creature.m */,
-				62DE9A0C36DE2EA762BFAF50 /* Creature.h */,
+				62DE907F7857F41B8B3DDFEB /* Creature.h */,
+				62DE9851E6BD1B47D3EE54B1 /* Creature.m */,
+				62DE99A178FC7703F31556B8 /* Grid.h */,
+				62DE9015D91FEA398288F07A /* Grid.m */,
+				62DE9BBD3EF3449701024C49 /* GameEvolver.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -464,8 +466,8 @@
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
-				62DE927A72BB0BF0FD404CCA /* Grid.m in Sources */,
-				62DE95290C68DA8EABCDAC23 /* Creature.m in Sources */,
+				62DE9A83C314292D5C1B82BF /* Creature.m in Sources */,
+				62DE950DDADC4B134C525644 /* Grid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

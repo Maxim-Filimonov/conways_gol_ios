@@ -28,5 +28,7 @@ static const int GRID_COLUMNS = 10;
 
 - (void)pause;
 
+- (void)updateCreatures;
+
 - (void)countNeighbours;
 @end

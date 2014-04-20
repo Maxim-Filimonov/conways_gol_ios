@@ -202,6 +202,70 @@ describe(@"Grid", ^{
             [[theValue(testCreature.livingNeighbors) should] equal:theValue(2)];
         });
     });
+    describe(@"-updateCreatures", ^{
+        __block Grid *grid;
+        __block Grid *gameEvolver;
+        __block Creature *creature;
+        beforeEach(^{
+            grid = [[Grid alloc] init];
+            gameEvolver = [Grid mock];
+            [grid setGameEvolver:gameEvolver];
+            [grid onEnter];
+            creature = [grid gridArray][0][0];
+        });
+        describe(@"if creature is alive", ^{
+            beforeEach(^{
+                creature.isAlive = TRUE;
+            });
+            it(@"kills creature with one neighbor", ^{
+                creature.livingNeighbors = 1;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beFalse];
+            });
+            it(@"leaves creature untouched if it has two neighbors", ^{
+                creature.livingNeighbors = 2;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beTrue];
+            });
+            it(@"leaves creature untouched if it has three neighbors", ^{
+                creature.livingNeighbors = 3;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beTrue];
+            });
+            it(@"kills creature if it has 4 neighbors", ^{
+                creature.livingNeighbors = 4;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beFalse];
+            });
+        });
+        describe(@"when creature is dead", ^{
+            beforeEach(^{
+                creature.isAlive = FALSE;
+            });
+            it(@"revives creature if it has exactly 3 neighbors", ^{
+                creature.livingNeighbors = 3;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beTrue];
+            });
+            it(@"leaves creature untouched if it has two neighbors", ^{
+                creature.livingNeighbors = 2;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beFalse];
+            });
+        });
+    });
 });
 
 SPEC_END

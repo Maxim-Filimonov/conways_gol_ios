@@ -97,7 +97,19 @@
 }
 
 - (void)updateCreatures {
-
+    for(NSMutableArray *row in _gridArray) {
+        for(Creature* creature in row) {
+            if (creature.livingNeighbors < 2) {
+                creature.isAlive = FALSE;
+            }
+            else if (creature.livingNeighbors > 3) {
+                creature.isAlive = FALSE;
+            }
+            else if(creature.livingNeighbors == 3){
+                creature.isAlive = TRUE;
+            }
+        }
+    }
 }
 
 - (void)countNeighbours {

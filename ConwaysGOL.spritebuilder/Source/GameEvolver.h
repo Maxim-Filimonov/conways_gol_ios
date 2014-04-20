@@ -7,6 +7,6 @@
 
 @protocol GameEvolver <NSObject>
 - (void)evolveStep;
-@property (nonatomic, readonly) int generation;
+@property (nonatomic) int generation;
 @property (nonatomic, readonly) int population;
 @end

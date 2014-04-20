@@ -19,6 +19,7 @@
 
     if (self) {
         self.isAlive = FALSE;
+        self.livingNeighbors = 0;
     }
 
     return self;

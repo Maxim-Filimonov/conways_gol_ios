@@ -10,5 +10,7 @@
 @interface Creature : CCSprite
 @property(nonatomic, assign) BOOL isAlive;
 
+@property(nonatomic) NSUInteger livingNeighbors;
+
 - (id)initCreature;
 @end

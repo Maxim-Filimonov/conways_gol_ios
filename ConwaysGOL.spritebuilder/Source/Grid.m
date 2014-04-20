@@ -89,5 +89,47 @@
 }
 
 - (void)evolveStep {
+    [self countNeighbours];
+
+    [self updateCreatures];
+
+    [self setGeneration:self.gameEvolver.generation++];
+}
+
+- (void)updateCreatures {
+
+}
+
+- (void)countNeighbours {
+
+   for(NSMutableArray *row in _gridArray) {
+       for(Creature* creature in row) {
+           creature.livingNeighbors = 0;
+           NSUInteger topRowIndex = [_gridArray indexOfObject:row] - 1;
+           for (NSUInteger rowNeighborsIndex = topRowIndex; rowNeighborsIndex <= topRowIndex +2; rowNeighborsIndex++) {
+               NSUInteger leftColumnIndex = [row indexOfObject:creature] - 1;
+
+               for (NSUInteger neighborsIndex = leftColumnIndex; neighborsIndex <= leftColumnIndex +2; neighborsIndex++) {
+                   if([self isIndexValidForRow:rowNeighborsIndex andColumn:neighborsIndex])
+                   {
+                       NSMutableArray *neighborRow = _gridArray[rowNeighborsIndex];
+                       Creature* neighbor = neighborRow[neighborsIndex];
+
+                       if(neighbor.isAlive) {
+                           creature.livingNeighbors += 1;
+                       }
+                   }
+               }
+           }
+       }
+   }
+}
+
+- (BOOL)isIndexValidForRow:(NSUInteger)rowIndex andColumn:(NSUInteger)columnIndex {
+    BOOL isIndexValid = TRUE;
+    if(rowIndex < 0 || columnIndex < 0 || rowIndex >= GRID_ROWS || columnIndex >= GRID_COLUMNS){
+        isIndexValid = FALSE;
+    }
+    return isIndexValid;
 }
 @end

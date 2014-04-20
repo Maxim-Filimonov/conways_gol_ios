@@ -139,6 +139,42 @@ describe(@"Grid", ^{
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
         });
     });
+    describe(@"-countNeighbours", ^{
+        __block Grid *grid;
+        __block Grid *gameEvolver;
+        beforeEach(^{
+            grid = [[Grid alloc] init];
+            gameEvolver = [Grid mock];
+            [grid setGameEvolver:gameEvolver];
+            [grid onEnter];
+        });
+       it(@"counts alive neighbors from row above", ^{
+           for (NSUInteger cols = 0; cols < 3; cols++) {
+               Creature *creature = [[Creature alloc] initCreature];
+               creature.isAlive = TRUE;
+               [grid gridArray][0][cols] = creature;
+           }
+           Creature *testCreature = [[Creature alloc] initCreature];
+           [grid gridArray][1][1] = testCreature;
+
+           [grid countNeighbours];
+
+           [[theValue(testCreature.livingNeighbors) should] equal:theValue(3)];
+       });
+        it(@"counts alive neighbor from row below", ^{
+            for (NSUInteger cols = 0; cols < 3; cols++) {
+                Creature *creature = [[Creature alloc] initCreature];
+                creature.isAlive = TRUE;
+                [grid gridArray][2][cols] = creature;
+            }
+            Creature *testCreature = [[Creature alloc] initCreature];
+            [grid gridArray][1][1] = testCreature;
+
+            [grid countNeighbours];
+
+            [[theValue(testCreature.livingNeighbors) should] equal:theValue(3)];
+        });
+    });
 });
 
 SPEC_END

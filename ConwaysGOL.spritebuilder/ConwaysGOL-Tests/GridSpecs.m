@@ -90,62 +90,10 @@ describe(@"Grid", ^{
             });
         });
     });
-    describe(@"-play", ^{
-        __block Grid *grid;
-        __block Grid *gameEvolver;
-        beforeEach(^{
-            grid = [[Grid alloc] init];
-            [grid onEnter];
-
-            gameEvolver = [Grid mock];
-            [grid setGameEvolver:gameEvolver];
-            [gameEvolver stub:@selector(evolveStep)];
-            [gameEvolver stub:@selector(generation) andReturn:theValue(0)];
-            [gameEvolver stub:@selector(population) andReturn:theValue(0)];
-            [grid setGenerationLabel:[[CCLabelTTF alloc] init]];
-            [grid setPopulationLabel:[[CCLabelTTF alloc] init]];
-        });
-       it(@"schedules evolve of step every half a second", ^{
-           // 2 schedules per second + 1 initial when schedule launched
-           [grid play];
-
-           [[gameEvolver should] receive:@selector(evolveStep) withCount:3];
-           [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
-       });
-       it(@"updates generation label and population labels", ^{
-           // 2 schedules per second + 1 initial when schedule launched
-           [gameEvolver stub:@selector(generation) andReturn:theValue(42)];
-           [gameEvolver stub:@selector(population) andReturn:theValue(111)];
-           [grid play];
-
-           [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-           [[grid.generationLabel.string should] equal:@"42"];
-           [[grid.populationLabel.string should] equal:@"111"];
-       });
-    });
-    describe(@"-pause", ^{
-        __block Grid *grid;
-        __block Grid *gameEvolver;
-        beforeEach(^{
-            grid = [[Grid alloc] init];
-            gameEvolver = [Grid mock];
-            [grid setGameEvolver:gameEvolver];
-        });
-        it(@"stops schedule", ^{
-            [grid play];
-
-            [[gameEvolver shouldNot] receive:@selector(evolveStep)];
-            [grid pause];
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
-        });
-    });
     describe(@"-countNeighbours", ^{
         __block Grid *grid;
-        __block Grid *gameEvolver;
         beforeEach(^{
             grid = [[Grid alloc] init];
-            gameEvolver = [Grid mock];
-            [grid setGameEvolver:gameEvolver];
             [grid onEnter];
         });
        it(@"counts alive neighbors from row above", ^{
@@ -204,12 +152,130 @@ describe(@"Grid", ^{
     });
     describe(@"-updateCreatures", ^{
         __block Grid *grid;
-        __block Grid *gameEvolver;
         __block Creature *creature;
         beforeEach(^{
             grid = [[Grid alloc] init];
-            gameEvolver = [Grid mock];
-            [grid setGameEvolver:gameEvolver];
+            [grid onEnter];
+            creature = [grid gridArray][0][0];
+        });
+        describe(@"if creature is alive", ^{
+            beforeEach(^{
+                creature.isAlive = TRUE;
+            });
+            it(@"kills creature with one neighbor", ^{
+                creature.livingNeighbors = 1;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beFalse];
+            });
+            it(@"leaves creature untouched if it has two neighbors", ^{
+                creature.livingNeighbors = 2;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beTrue];
+            });
+            it(@"leaves creature untouched if it has three neighbors", ^{
+                creature.livingNeighbors = 3;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beTrue];
+            });
+            it(@"kills creature if it has 4 neighbors", ^{
+                creature.livingNeighbors = 4;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beFalse];
+            });
+        });
+        describe(@"when creature is dead", ^{
+            beforeEach(^{
+                creature.isAlive = FALSE;
+            });
+            it(@"revives creature if it has exactly 3 neighbors", ^{
+                creature.livingNeighbors = 3;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beTrue];
+            });
+            it(@"leaves creature untouched if it has two neighbors", ^{
+                creature.livingNeighbors = 2;
+
+                [grid updateCreatures];
+
+                [[theValue(creature.isAlive) should] beFalse];
+            });
+        });
+    });
+    describe(@"-countNeighbours", ^{
+        __block Grid *grid;
+        beforeEach(^{
+            grid = [[Grid alloc] init];
+            [grid onEnter];
+        });
+        it(@"counts alive neighbors from row above", ^{
+            for (NSUInteger cols = 0; cols < 3; cols++) {
+                Creature *creature = [[Creature alloc] initCreature];
+                creature.isAlive = TRUE;
+                [grid gridArray][0][cols] = creature;
+            }
+            Creature *testCreature = [[Creature alloc] initCreature];
+            [grid gridArray][1][1] = testCreature;
+
+            [grid countNeighbours];
+
+            [[theValue(testCreature.livingNeighbors) should] equal:theValue(3)];
+        });
+        it(@"counts alive neighbor from row below", ^{
+            for (NSUInteger cols = 0; cols < 3; cols++) {
+                Creature *creature = [[Creature alloc] initCreature];
+                creature.isAlive = TRUE;
+                [grid gridArray][2][cols] = creature;
+            }
+            Creature *testCreature = [[Creature alloc] initCreature];
+            [grid gridArray][1][1] = testCreature;
+
+            [grid countNeighbours];
+
+            [[theValue(testCreature.livingNeighbors) should] equal:theValue(3)];
+        });
+        it(@"counts alive neighbors on the same row", ^{
+            Creature* aliveCreature = [[Creature alloc] initCreature];
+            aliveCreature.isAlive = TRUE;
+            [grid gridArray][1][0] = aliveCreature;
+            [grid gridArray][1][2] = aliveCreature;
+
+            Creature *testCreature = [[Creature alloc] initCreature];
+            [grid gridArray][1][1] = testCreature;
+
+            [grid countNeighbours];
+
+            [[theValue(testCreature.livingNeighbors) should] equal:theValue(2)];
+        });
+        it(@"ignores the cell itselfs when counting neighbors", ^{
+            Creature* aliveCreature = [[Creature alloc] initCreature];
+            aliveCreature.isAlive = TRUE;
+            [grid gridArray][1][0] = aliveCreature;
+            [grid gridArray][1][2] = aliveCreature;
+
+            Creature *testCreature = [[Creature alloc] initCreature];
+            [grid gridArray][1][1] = testCreature;
+            testCreature.isAlive = TRUE;
+
+            [grid countNeighbours];
+
+            [[theValue(testCreature.livingNeighbors) should] equal:theValue(2)];
+        });
+    });
+    describe(@"-updateCreatures", ^{
+        __block Grid *grid;
+        __block Creature *creature;
+        beforeEach(^{
+            grid = [[Grid alloc] init];
             [grid onEnter];
             creature = [grid gridArray][0][0];
         });

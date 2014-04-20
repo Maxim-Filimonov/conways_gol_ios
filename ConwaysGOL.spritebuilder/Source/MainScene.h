@@ -7,7 +7,18 @@
 //
 
 #import "CCNode.h"
+#import "CCLabelTTF.h"
+
+@class Grid;
 
 @interface MainScene : CCNode
 
+@property(nonatomic, strong) CCLabelTTF *generationLabel;
+@property(nonatomic, strong) CCLabelTTF *populationLabel;
+
+@property(nonatomic, strong) Grid *grid;
+
+- (void)play;
+
+- (void)pause;
 @end

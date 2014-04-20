@@ -5,28 +5,24 @@
 
 #import <Foundation/Foundation.h>
 #import "CCSprite.h"
-#import "GameEvolver.h"
 
 @class CCLabelTTF;
 
 
 static const int GRID_ROWS = 8;
 static const int GRID_COLUMNS = 10;
-@interface Grid : CCSprite <GameEvolver>
+@interface Grid : CCSprite
 
 @property(nonatomic, strong) NSMutableArray *gridArray;
 
 @property(nonatomic, readonly) float cellWidth;
 @property(nonatomic, readonly) float cellHeight;
-@property(nonatomic, strong) id<GameEvolver> gameEvolver;
 
-@property(nonatomic, strong) CCLabelTTF *generationLabel;
+@property(nonatomic, readonly) int generation;
 
-@property(nonatomic, strong) CCLabelTTF *populationLabel;
+@property(nonatomic) int population;
 
-- (void)play;
-
-- (void)pause;
+- (void)evolveStep;
 
 - (void)updateCreatures;
 

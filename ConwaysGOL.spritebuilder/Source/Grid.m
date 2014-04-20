@@ -5,16 +5,10 @@
 
 #import "Grid.h"
 #import "Creature.h"
-#import "CCNode_Private.h"
-#import "CCLabelTTF.h"
 
 
 @implementation Grid {
     NSMutableArray *_gridArray;
-    int _generation;
-    int _totalAlive;
-    CCLabelTTF *_generationLabel;
-    CCLabelTTF *_populationLabel;
 }
 // Calls on loading of grid into UI
 - (void)onEnter {
@@ -42,14 +36,6 @@
     return row[columnIndex];
 }
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        [self setGameEvolver:self];
-    }
-
-    return self;
-}
 
 - (void)setupGrid {
 
@@ -74,26 +60,12 @@
     }
 }
 
-- (void)play {
-    [self schedule:@selector(step) interval:0.5f];
-}
-
-- (void)pause {
-    [self unschedule:@selector(step)];
-}
-
-- (void)step {
-    [self.gameEvolver evolveStep];
-    self.generationLabel.string = [NSString stringWithFormat:@"%d", _gameEvolver.generation];
-    self.populationLabel.string = [NSString stringWithFormat:@"%d", _gameEvolver.population];
-}
-
 - (void)evolveStep {
     [self countNeighbours];
 
     [self updateCreatures];
 
-    [self setGeneration:self.gameEvolver.generation++];
+    _generation += 1;
 }
 
 - (void)updateCreatures {

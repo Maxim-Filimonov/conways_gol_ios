@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		62DE950DDADC4B134C525644 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9015D91FEA398288F07A /* Grid.m */; };
+		62DE970565C12768E073DE0B /* MainSceneSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9A8BCFD73DF8BE266ACD /* MainSceneSpecs.m */; };
 		62DE98DEAAF2F32B3650600F /* CreatureSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */; };
 		62DE9A83C314292D5C1B82BF /* Creature.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE9851E6BD1B47D3EE54B1 /* Creature.m */; };
 		62DE9BD0E87C04A3E3878251 /* GridSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DE901EF45D87E39A124CF6 /* GridSpecs.m */; };
@@ -78,7 +79,7 @@
 		62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatureSpecs.m; sourceTree = "<group>"; };
 		62DE9851E6BD1B47D3EE54B1 /* Creature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Creature.m; path = Source/Creature.m; sourceTree = "<group>"; };
 		62DE99A178FC7703F31556B8 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Grid.h; path = Source/Grid.h; sourceTree = "<group>"; };
-		62DE9BBD3EF3449701024C49 /* GameEvolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameEvolver.h; path = Source/GameEvolver.h; sourceTree = "<group>"; };
+		62DE9A8BCFD73DF8BE266ACD /* MainSceneSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSceneSpecs.m; sourceTree = "<group>"; };
 		94EDC42118C63C31006F98EA /* ConwaysGOL-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConwaysGOL-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EDC42218C63C31006F98EA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		94EDC42818C63C31006F98EA /* ConwaysGOL-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConwaysGOL-Tests-Info.plist"; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 				94EDC42718C63C31006F98EA /* Supporting Files */,
 				62DE9209DEC1E711106A4AA2 /* CreatureSpecs.m */,
 				62DE901EF45D87E39A124CF6 /* GridSpecs.m */,
+				62DE9A8BCFD73DF8BE266ACD /* MainSceneSpecs.m */,
 			);
 			path = "ConwaysGOL-Tests";
 			sourceTree = "<group>";
@@ -191,7 +193,6 @@
 				62DE9851E6BD1B47D3EE54B1 /* Creature.m */,
 				62DE99A178FC7703F31556B8 /* Grid.h */,
 				62DE9015D91FEA398288F07A /* Grid.m */,
-				62DE9BBD3EF3449701024C49 /* GameEvolver.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -456,6 +457,7 @@
 			files = (
 				62DE98DEAAF2F32B3650600F /* CreatureSpecs.m in Sources */,
 				62DE9BD0E87C04A3E3878251 /* GridSpecs.m in Sources */,
+				62DE970565C12768E073DE0B /* MainSceneSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

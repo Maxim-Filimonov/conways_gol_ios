@@ -1,7 +1,6 @@
 #import "Kiwi.h"
 #import "MainScene.h"
 #import "Grid.h"
-#import "CCLabelTTF.h"
 
 SPEC_BEGIN(MainSceneSpecs)
 

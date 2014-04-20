@@ -106,16 +106,16 @@
        for(Creature* creature in row) {
            creature.livingNeighbors = 0;
            NSUInteger topRowIndex = [_gridArray indexOfObject:row] - 1;
-           for (NSUInteger rowNeighborsIndex = topRowIndex; rowNeighborsIndex <= topRowIndex +2; rowNeighborsIndex++) {
+           for (NSUInteger rowNeighborsIndex = topRowIndex; rowNeighborsIndex <= topRowIndex + 2; rowNeighborsIndex++) {
                NSUInteger leftColumnIndex = [row indexOfObject:creature] - 1;
 
-               for (NSUInteger neighborsIndex = leftColumnIndex; neighborsIndex <= leftColumnIndex +2; neighborsIndex++) {
+               for (NSUInteger neighborsIndex = leftColumnIndex; neighborsIndex <= leftColumnIndex + 2; neighborsIndex++) {
                    if([self isIndexValidForRow:rowNeighborsIndex andColumn:neighborsIndex])
                    {
                        NSMutableArray *neighborRow = _gridArray[rowNeighborsIndex];
                        Creature* neighbor = neighborRow[neighborsIndex];
 
-                       if(neighbor.isAlive) {
+                       if(neighbor.isAlive && neighbor != creature) {
                            creature.livingNeighbors += 1;
                        }
                    }

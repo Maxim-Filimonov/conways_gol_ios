@@ -174,6 +174,33 @@ describe(@"Grid", ^{
 
             [[theValue(testCreature.livingNeighbors) should] equal:theValue(3)];
         });
+        it(@"counts alive neighbors on the same row", ^{
+            Creature* aliveCreature = [[Creature alloc] initCreature];
+            aliveCreature.isAlive = TRUE;
+            [grid gridArray][1][0] = aliveCreature;
+            [grid gridArray][1][2] = aliveCreature;
+
+            Creature *testCreature = [[Creature alloc] initCreature];
+            [grid gridArray][1][1] = testCreature;
+
+            [grid countNeighbours];
+
+            [[theValue(testCreature.livingNeighbors) should] equal:theValue(2)];
+        });
+        it(@"ignores the cell itselfs when counting neighbors", ^{
+            Creature* aliveCreature = [[Creature alloc] initCreature];
+            aliveCreature.isAlive = TRUE;
+            [grid gridArray][1][0] = aliveCreature;
+            [grid gridArray][1][2] = aliveCreature;
+
+            Creature *testCreature = [[Creature alloc] initCreature];
+            [grid gridArray][1][1] = testCreature;
+            testCreature.isAlive = TRUE;
+
+            [grid countNeighbours];
+
+            [[theValue(testCreature.livingNeighbors) should] equal:theValue(2)];
+        });
     });
 });
 

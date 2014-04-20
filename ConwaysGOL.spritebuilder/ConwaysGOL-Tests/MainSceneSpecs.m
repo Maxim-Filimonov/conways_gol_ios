@@ -25,7 +25,7 @@ describe(@"MainScene", ^{
            // 2 schedules per second + 1 initial when schedule launched
            [scene play];
 
-           [[gameEvolver should] receive:@selector(evolveStep) withCount:3];
+           [[gameEvolver should] receive:@selector(evolveStep) withCountAtLeast:2];
            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
        });
        it(@"updates generation label and population labels", ^{
